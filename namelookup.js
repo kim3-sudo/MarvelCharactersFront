@@ -1,5 +1,6 @@
 // JavaScript for Name Data Lookup Demo
 // Jim Skon, Kenyon College, 2019
+// JavaScript for MarvelCharacters
 var searchType;  // Save serach type here
 
 $(document).ready(function () {
@@ -19,27 +20,26 @@ $(document).ready(function () {
 
 });
 
-// Build output table from comma delimited list
+// Build output table of character names from comma delimited list
 function nameTable(list) {
-    var result = '<table class="w3-table-all w3-hoverable" border="2"><tr><th colspan="4">Name</th><tr>';
+    var result = "<div id='newTable'><table class='w3-table-all w3-hoverable' border='2'><tr><th colspan='4'>Name</th><tr>";
     //a is an array
 	var a = list.split(",");
     var aLen = a.length;
     for (var i = 0; i < aLen; i+=48) {
 	result += "<tr><td>"+a[i]+"</td><td>"+a[i+12]+"</td><td>"+a[i+24]+"</td><td>"+a[i+36]+"</td></tr>";
     }
-    result += "</table>";
+    result += "</table></div id='newTable'>";
 
     return result;
 	
-	/*
-	$("td").click(processInfo(results), function() {
+	$("#newTable").on("click", "td", processInfo(results), function() {
 		console.log("Clicked!");
 	});
-	*/
+
 }
 
-/*
+//Builds output table of character data from comma delimited list
 function characterData(list){
 	var result = '<table class="w3-table-all w3-hoverable" border="2"><tr><th>Name</th><th>Identity</th><th>Alignment</th><th>Eye Color</th><th>Hair Color</th><th>Sex</th><th>Sexual Orientation</th><th>Living Status</th><th>Number of Appearances</th><th>First Appearance</th><th>Webpage</th><tr>';
 	var a = list.split(",");
@@ -58,14 +58,15 @@ function characterData(list){
 	result += "</table>";
 }
 
+
 function processInfo(results){
 	console.log("Get info");
-	//$('#searchresults').empty();
+	$('#searchresults').empty();
 	console.log("still getting	info");
 	$('#searchresults').append(characterData(results));
 	console.log("still getting	info");
 }
-*/
+
 
 function processResults(results) {
     $('#searchresults').empty();
